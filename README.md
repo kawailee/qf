@@ -13,7 +13,9 @@ cmake .. -DCMAKE_PREFIX_PATH=/your/directory/
 make -j 4
 ```
 
-## Run
+## Display Coupon Schedule
+
+This demonstrates to create Schedule using MakeSchedule().
 
 ``` bash
 ./coupon_date
@@ -39,14 +41,23 @@ November 26th, 2029
 May 27th, 2030
 November 26th, 2030
 May 26th, 2031
-
-96.3256
-0.0833333
-96.6641
-110.34
-101.913
-0.0171229
 ```
+
+## Calculate coupon interest accrued
+
+This sample reads a file which has each line representing a coupon.
+
+1. Coupon file name accrual_rate.txt is provided in the command line
+2. Coupon file has 7 columns
+   - Column 1: Identifier of this coupon (no use)
+   - Column 2: Coupon start date in MM/DD/YYYY format
+   - Column 3: Value Date in MM/DD/YYYY format
+   - Column 4: Coupon end date in MM/DD/YYYY format
+   - Column 5: Coupon leg number (no use)
+   - Column 6: Daycount code (e.g. 1 means 30/360; 2 means ACT/360, ...)
+   - Column 7: Fixed Rate
+3. The output adds Column 8 which is coupon interest accrued rate.
+   - If coupon is $100 and accrued rate is 0.47382475, interest accrued is calculated by multiplying $100 to the rate.
 
 ./accrual ../accrual_rate.txt
 ```
@@ -57,3 +68,6 @@ May 26th, 2031
 5|08/09/2024|03/10/2025|08/09/2025|2|5|9.5|5.5680555555556
 6|06/12/2024|03/10/2025|06/12/2025|2|9|5.043|3.7442547945205
 ```
+
+---
+End
