@@ -7,12 +7,15 @@ set( CMAKE_INCLUDE_CURRENT_DIR ON )
 
 project( qf )
 
+add_executable( accrual accrual.cpp)
 add_executable( coupon_date coupon_date.cpp)
 
 find_package(QuantLib REQUIRED )
 
+target_link_libraries(accrual QuantLib::QuantLib)
 target_link_libraries(coupon_date QuantLib::QuantLib)
 
+set_property(TARGET accrual PROPERTY CXX_STANDARD 17 )
 set_property(TARGET coupon_date PROPERTY CXX_STANDARD 17 )
 
 
